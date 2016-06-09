@@ -32,10 +32,18 @@
 
         <div class="cover-container">
 
-          <div class="masthead clearfix">
+           <div class="masthead clearfix">
             <div class="inner">
               <h3 class="masthead-brand">Centro Pokemon</h3>
-            
+              <nav>
+                <ul class="nav masthead-nav">
+                  <li class="active"><a href="#">Inicio</a></li>
+                  <li><a href="Usuario/index.jsp">Usuario</a></li>
+                  <li><a href="#">Pokemon</a></li>
+                  <li><a href="#">Habilidad</a></li>
+                  <li><a href="#">Tipos</a></li>
+                </ul>
+              </nav>
             </div>
           </div>
             <sql:setDataSource 
@@ -71,6 +79,7 @@
 			
                     <table class="table table-bordered">
                         <tbody>
+                        <h1>Tus Datos</h1>
                             <tr>
                                 <td>Usuario_id</td>
                                 <td>NOMBRE</td>
