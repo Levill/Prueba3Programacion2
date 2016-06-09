@@ -1,3 +1,4 @@
+<%@page import="accesodato.Coneccion"%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -16,7 +17,10 @@
 
         <!-- Custom styles for this template -->
         <link href="../template/css/cover.css" rel="stylesheet">
+
+
     </head>
+
     <body>
 
         <div class="site-wrapper">
@@ -40,41 +44,64 @@
                             </nav>
                         </div>
                     </div>
-                    <form method="POST" action="ServletUsuario">
-                    <div class="inner cover">
-                        <h1 class="cover-heading">Usuarios</h1>
-                        <p class="lead">                 <!Cuerpo >
 
-                                <table class="table table-bordered">
-                                    
-                                
-                             <div class="form-group">
-                                 <label for="nombre">Nombre</label>
-                                 <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Ingresar Nombre">
-                             </div>
-                              <div class="form-group">
-                                 <label for="nombre">Passwd</label>
-                                 <input type="text" class="form-control" name="passwf" id="nombre" placeholder="Ingresar Nombre">
-                             </div>
-                              <div class="form-group">
-                                 <label for="nombre">Fecha</label>
-                                 <input type="text" class="form-control" name="fecha" id="nombre" placeholder="Ingresar Nombre">
-                             </div>
-                              
-                             <td><input type="submit" name="guardar" value="guardar"></td>
-                         
-                                </table>
+                    <div class="panel-body">
+                        <h1 class="table table-bordered">Usuarios</h1>
+                        <p class="lead">                 <!Cuerpo >
+                        <div class="">
+
+
+                        </div>
+                        <%
+                            int id = Integer.parseInt(request.getParameter("editar"));
+                            Coneccion con = new Coneccion();
+                            con.setConsulta("select * from Usuarios where usuario_id='" + id + "'");
+                        %>
+                        <div class="panel-body">
+                            <% while (con.getResultado().next()) {  %>
+
+                            <form method="POST" action="../ServletUsuario?editar=si">
+
+
+                                <!-- OJO CON EL CAMPO READONLY QUE ES ENVIADO POR EL FORMULARIO PARA ACTUALIZAR -->
+                                <caption>ID</caption>
+                                <div>
+                                <input type="text" readonly="true" value='<% out.println("" + con.getResultado().getString("usuario_id")); %>' name="id">
+                                </div>
+                                <div class="form-group">
+                                    <label for="nombre">Nombre </label>
+                                    <input type="text" class="form-control" name="nombre" value='<% out.println("" + con.getResultado().getString("nombre")); %>' id="nombre" placeholder="Ingresar Nombre">
+                                </div>
+                                <div class="form-group">
+                                    <label for="nombre">Password</label>
+                                        <input type="text" class="form-control" name="passwd" value='<% out.println("" + con.getResultado().getString("passwd")); %>' id="nombre" placeholder="Ingresar Nombre">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="nombre">Fecha</label>
+                                            <input type="text" class="form-control" name="fecha" value='<% out.println("" + con.getResultado().getString("fecha")); %>' id="nombre" placeholder="Ingresar Nombre">
+                                        </div>
+
+                                        <td><input type="submit" name="editar" value="Actualizar"></td>
+                                        </form>
+                                        <% }%> 
+
+                                </div>
+
+                        </div>
                         </p>
 
                         <p class="lead">
 
                             <a href="index.jsp" class="btn btn-primary">Volver</a>
+
                         </p>
                     </div>
-                            </form>
-                        
+
                     <div class="mastfoot">
                         <div class="inner">
+
+
+
                         </div>
                     </div>
 
