@@ -35,10 +35,10 @@
                             <nav>
                                 <ul class="nav masthead-nav">
                                     <li class="active"><a href="../index.html">Inicio</a></li>
-                                    <li><a href="../Usuario/index.jsp">usuario</a></li>
+                                    <li><a href="../Usuario/index.jsp">Usuario</a></li>
                                     <li><a href="../Pokemon/index.jsp">Pokemon</a></li>
                                     <li><a href="../Habilidades/index.jsp">Habilidad</a></li>
-                                    <li><a href="../Tipo/index.jsp">Tipos</a></li>
+                                    <li><a href="index.jsp">Tipos</a></li>
                                 </ul>
                             </nav>
                         </div>
@@ -47,7 +47,7 @@
     
     <br><br><br>
                     <div class="inner cover">
-                        <h1 class="cover-heading">Usuarios</h1>
+                        <h1 class="cover-heading">Tipos</h1>
                         <p class="lead"></p>
 
                         <table class="table table-bordered">
@@ -55,23 +55,21 @@
                             <thead>
                             <th>ID</th>
                             <th>NOMBRE</th>
-                            <th>Password</th>
-                            <th>Fecha de nacimiento</th>
+                            <th>Habilidad_Id</th>                            
                             <th>Acciones</th>
                             </thead>
                             <tbody>
                                 <%
                                     Coneccion con = new Coneccion();
-                                    con.setConsulta("select * from usuarios where estado='activo'");
+                                    con.setConsulta("select * from tipos where estado='activo'");
                                     while (con.getResultado().next()) {
                                         out.println("<tr>");
-                                        out.println("<td>" + con.getResultado().getString("usuario_id") + "</td>");
+                                        out.println("<td>" + con.getResultado().getString("tipo_id") + "</td>");
                                         out.println("<td>" + con.getResultado().getString("nombre") + "</td>");
-                                        out.println("<td>" + con.getResultado().getString("passwd") + "</td>");
-                                        out.println("<td>" + con.getResultado().getString("fecha") + "</td>");
-                                        out.println("<td>" + "<a href='../ServletUsuario?eliminar=" + con.getResultado().getString("usuario_id") + "'>Eliminar</a>" + "</td>");
-                                        out.println("<td>"+"<a href='editar.jsp?editar="+con.getResultado().getString("usuario_id")+"' class='btn btn-green'>Editar</a>"+"</td>");
-                                                
+                                        out.println("<td>" + con.getResultado().getString("habilidad_id") + "</td>");
+                                        out.println("<td>" + "<a href='../ServletTipo?eliminar=" + con.getResultado().getString("tipo_id") + "'>Eliminar</a>" + "</td>");
+                                        out.println("<td>"+"<a href='editar.jsp?editar3="+con.getResultado().getString("tipo_id")+"' class='btn btn-green'>Editar</a>"+"</td>");
+                                              
                                         out.println("</tr>");
                                     }
                                 %>         
@@ -82,7 +80,7 @@
                         </table> 
                        
                     </div>
-                                <a href="crear.jsp" class="btn btn-primary">nuevo</a>
+                               <a href="../index.jsp"class="btn btn-danger">Volver</a>   <a href="crear.jsp" class="btn btn-primary">nuevo</a>
 
 
                         </div>
@@ -101,4 +99,5 @@
         <script src="../template/js/bootstrap.min.js"></script>
 
     </body>
+</html>y>
 </html>

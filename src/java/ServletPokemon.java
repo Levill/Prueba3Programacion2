@@ -11,14 +11,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import negocio.Usuario;
+import negocio.Pokemon;
 
 /**
  *
  * @author emanuel
  */
-@WebServlet(urlPatterns = {"/ServletUsuario"})
-public class ServletUsuario extends HttpServlet {
+@WebServlet(urlPatterns = {"/ServletPokemon"})
+public class ServletPokemon extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,45 +34,53 @@ public class ServletUsuario extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             
-            if(request.getParameter("eliminar")!=null){
+
+            if (request.getParameter("eliminar")!=null) {
                 int id=Integer.parseInt(request.getParameter("eliminar"));
-               out.println("Eliminar ID:"+id);
-               Usuario user=new Usuario();
-               user.setUsuario_id(id);
-               user.BorrarUsuario();
-               response.sendRedirect("Usuario/index.jsp");
-               
-               
-            }else if(request.getParameter("guardar")!=null){
-                String nombre=request.getParameter("nombre");
-               String passwd=request.getParameter("passwd");
-               String fecha=request.getParameter("fecha");
-               Usuario user=new Usuario();
-               user.setNombre(nombre);
-               user.setPasswd(passwd);
-               user.setFecha(fecha);
-               user.GuardarUsuario();
-               //REDIRECCIONAR A INDEX.JSP DeSPUES DE GUARDAR
-               response.sendRedirect("Usuario/index.jsp");
-                    
-               
-               
-           }else if(request.getParameter("editar")!=null){
-               int usuario_id=Integer.parseInt(request.getParameter("id"));
-               String nombre=request.getParameter("nombre");
-               String passwd=request.getParameter("passwd");
-               String fecha=request.getParameter("fecha");
-               Usuario user=new Usuario();
-               
-               user.setUsuario_id(usuario_id);
-               user.setNombre(nombre);
-               user.setPasswd(passwd);
-               user.setFecha(fecha);
-               user.ActualizarUsuario();
-               
-               response.sendRedirect("Usuario/index.jsp");
-               
-           }
+                out.println("Eliminar ID:"+id);
+                Pokemon pok=new Pokemon();
+                pok.setPokemon_id(id);
+                pok.BorrarPokemon();
+                response.sendRedirect("Pokemon/index.jsp");
+                
+            } else if (request.getParameter("guardar2") != null) {
+                String Nombre=request.getParameter("nombre");
+                int Numero=Integer.parseInt(request.getParameter("numero"));
+                String fecha=request.getParameter("fecha");
+                int Tipo=Integer.parseInt(request.getParameter("tipo"));
+                int Creado=Integer.parseInt(request.getParameter("creado"));
+
+                Pokemon pok = new Pokemon();
+                pok.setNombre(Nombre);
+                pok.setNumero(Numero);
+                pok.setFecha_nacimiento(fecha);
+                pok.setTipo_id(Tipo);
+                pok.setCreado_por(Creado);
+                pok.GuardarPokemon();
+                response.sendRedirect("Pokemon/index.jsp");
+                
+                
+
+            }else if(request.getParameter("editar2") != null){
+                int pokemon_id=Integer.parseInt(request.getParameter("id"));
+                String Nombre=request.getParameter("nombre");
+                int Numero=Integer.parseInt(request.getParameter("numero"));
+                String fecha=request.getParameter("fecha");
+                int Tipo=Integer.parseInt(request.getParameter("tipo"));
+                int Creado=Integer.parseInt(request.getParameter("creado"));
+
+                Pokemon pok = new Pokemon();
+                pok.setPokemon_id(pokemon_id);
+                pok.setNombre(Nombre);
+                pok.setNumero(Numero);
+                pok.setFecha_nacimiento(fecha);
+                pok.setTipo_id(Tipo);
+                pok.setCreado_por(Creado);
+                pok.ActualizarPokemon();
+
+                response.sendRedirect("Pokemon/index.jsp");
+                
+            }
         }
     }
 

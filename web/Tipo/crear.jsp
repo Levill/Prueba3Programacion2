@@ -1,4 +1,3 @@
-<%@page import="accesodato.Coneccion"%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -17,10 +16,7 @@
 
         <!-- Custom styles for this template -->
         <link href="../template/css/cover.css" rel="stylesheet">
-
-
     </head>
-
     <body>
 
         <div class="site-wrapper">
@@ -43,53 +39,43 @@
                             </nav>
                         </div>
                     </div>
-<div class="panel-body">
-    
-    <br><br><br>
+                    <form method="POST" action="../ServletTipo">
                     <div class="inner cover">
-                        <h1 class="cover-heading">Usuarios</h1>
-                        <p class="lead"></p>
+                        <h1 class="cover-heading">Tipos</h1>
+                        <p class="lead">                 <!Cuerpo >
 
-                        <table class="table table-bordered">
+                                <table class="table table-bordered">
+                                    
+                                
+                             <div class="form-group">
+                                 <label for="nombre">Nombre</label>
+                                 <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Ingresar Nombre">
+                             </div>
+                              <div class="form-group">
+                                 <label for="nombre">N° de habilidad</label>
+                                 <input type="text" class="form-control" name="habilidad" id="nombre" placeholder="Ingresar Nombre">
+                             </div>
+                              
+                              
+                             <td><input type="submit" name="guardar3" value="guardar"></td>
+                         
+                                </table>
+                        </p>
 
-                            <thead>
-                            <th>ID</th>
-                            <th>NOMBRE</th>
-                            <th>Password</th>
-                            <th>Fecha de nacimiento</th>
-                            <th>Acciones</th>
-                            </thead>
-                            <tbody>
-                                <%
-                                    Coneccion con = new Coneccion();
-                                    con.setConsulta("select * from usuarios where estado='activo'");
-                                    while (con.getResultado().next()) {
-                                        out.println("<tr>");
-                                        out.println("<td>" + con.getResultado().getString("usuario_id") + "</td>");
-                                        out.println("<td>" + con.getResultado().getString("nombre") + "</td>");
-                                        out.println("<td>" + con.getResultado().getString("passwd") + "</td>");
-                                        out.println("<td>" + con.getResultado().getString("fecha") + "</td>");
-                                        out.println("<td>" + "<a href='../ServletUsuario?eliminar=" + con.getResultado().getString("usuario_id") + "'>Eliminar</a>" + "</td>");
-                                        out.println("<td>"+"<a href='editar.jsp?editar="+con.getResultado().getString("usuario_id")+"' class='btn btn-green'>Editar</a>"+"</td>");
-                                                
-                                        out.println("</tr>");
-                                    }
-                                %>         
-                                
-                                
-                            </tbody>
-                            
-                        </table> 
-                       
+                        <p class="lead">
+
+                            <a href="index.jsp" class="btn btn-primary">Volver</a>
+                        </p>
                     </div>
-                                <a href="crear.jsp" class="btn btn-primary">nuevo</a>
-
-
+                            </form>
+                        
+                    <div class="mastfoot">
+                        <div class="inner">
                         </div>
                     </div>
 
                 </div>
-                                    
+
             </div>
 
         </div>

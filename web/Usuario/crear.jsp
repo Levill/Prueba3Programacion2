@@ -16,10 +16,7 @@
 
         <!-- Custom styles for this template -->
         <link href="../template/css/cover.css" rel="stylesheet">
-
-
     </head>
-
     <body>
 
         <div class="site-wrapper">
@@ -33,55 +30,50 @@
                             <h3 class="masthead-brand">Centro Pokemon</h3>
                             <nav>
                                 <ul class="nav masthead-nav">
-                                    <li class="active"><a href="../index.jsp">Inicio</a></li>
-
-                                    <li><a href="../Usuario/index.jsp">Usuario</a></li>
-                                    <li><a href="#">Pokemon</a></li>
-                                    <li><a href="#">Habilidad</a></li>
-                                    <li><a href="#">Tipos</a></li>
+                                    <li class="active"><a href="../index.html">Inicio</a></li>
+                                    <li><a href="../Usuario/index.jsp">usuario</a></li>
+                                    <li><a href="../Pokemon/index.jsp">Pokemon</a></li>
+                                    <li><a href="../Habilidades/index.jsp">Habilidad</a></li>
+                                    <li><a href="../Tipo/index.jsp">Tipos</a></li>
                                 </ul>
                             </nav>
                         </div>
                     </div>
-
+                    <form method="POST" action="../ServletUsuario">
                     <div class="inner cover">
                         <h1 class="cover-heading">Usuarios</h1>
                         <p class="lead">                 <!Cuerpo >
 
                                 <table class="table table-bordered">
-                                 <form method="POST" action="../ServletUsuario">
+                                    
+                                
                              <div class="form-group">
                                  <label for="nombre">Nombre</label>
                                  <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Ingresar Nombre">
                              </div>
                               <div class="form-group">
-                                 <label for="nombre">passwd</label>
-                                 <input type="text" class="form-control" name="passwd" id="nombre" placeholder="Ingresar Nombre">
+                                 <label for="nombre">Passwd</label>
+                                 <input type="text" class="form-control" name="passwd" id="nombre" placeholder="Ingresar Password">
                              </div>
                               <div class="form-group">
                                  <label for="nombre">Fecha</label>
-                                 <input type="text" class="form-control" name="fecha" id="nombre" placeholder="Ingresar Nombre">
+                                 <input type="date" class="form-control" name="fecha" id="nombre" placeholder="Ingresar Fecha">
                              </div>
                               
                              <td><input type="submit" name="guardar" value="guardar"></td>
-                         </form>
+                         
                                 </table>
-                            
-
                         </p>
 
                         <p class="lead">
 
                             <a href="index.jsp" class="btn btn-primary">Volver</a>
-
                         </p>
                     </div>
-
+                            </form>
+                        
                     <div class="mastfoot">
                         <div class="inner">
-
-
-
                         </div>
                     </div>
 

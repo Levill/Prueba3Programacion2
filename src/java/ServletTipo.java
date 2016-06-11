@@ -11,14 +11,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import negocio.Usuario;
+import negocio.Tipos;
 
 /**
  *
  * @author emanuel
  */
-@WebServlet(urlPatterns = {"/ServletUsuario"})
-public class ServletUsuario extends HttpServlet {
+@WebServlet(urlPatterns = {"/ServletTipo"})
+public class ServletTipo extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,47 +33,38 @@ public class ServletUsuario extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            
-            if(request.getParameter("eliminar")!=null){
+            if (request.getParameter("eliminar")!=null) {
                 int id=Integer.parseInt(request.getParameter("eliminar"));
                out.println("Eliminar ID:"+id);
-               Usuario user=new Usuario();
-               user.setUsuario_id(id);
-               user.BorrarUsuario();
-               response.sendRedirect("Usuario/index.jsp");
-               
-               
-            }else if(request.getParameter("guardar")!=null){
-                String nombre=request.getParameter("nombre");
-               String passwd=request.getParameter("passwd");
-               String fecha=request.getParameter("fecha");
-               Usuario user=new Usuario();
-               user.setNombre(nombre);
-               user.setPasswd(passwd);
-               user.setFecha(fecha);
-               user.GuardarUsuario();
-               //REDIRECCIONAR A INDEX.JSP DeSPUES DE GUARDAR
-               response.sendRedirect("Usuario/index.jsp");
-                    
-               
-               
-           }else if(request.getParameter("editar")!=null){
-               int usuario_id=Integer.parseInt(request.getParameter("id"));
-               String nombre=request.getParameter("nombre");
-               String passwd=request.getParameter("passwd");
-               String fecha=request.getParameter("fecha");
-               Usuario user=new Usuario();
-               
-               user.setUsuario_id(usuario_id);
-               user.setNombre(nombre);
-               user.setPasswd(passwd);
-               user.setFecha(fecha);
-               user.ActualizarUsuario();
-               
-               response.sendRedirect("Usuario/index.jsp");
-               
-           }
-        }
+               Tipos typ=new Tipos();
+               typ.getTipo_id();
+               typ.BorrarTipos();
+               response.sendRedirect("Tipo/index.jsp");
+
+            } else if (request.getParameter("guardar3") != null) {
+                String nombre = request.getParameter("nombre");
+                int habilidad = Integer.parseInt(request.getParameter("habilidad"));
+                Tipos typ = new Tipos();
+                typ.setNombre(nombre);
+                typ.setHabilidad(habilidad);
+                typ.GuardarTipos();
+                response.sendRedirect("Tipos/index.jsp");
+                
+            }else if(request.getParameter("editar3") != null){
+                int tipo_id = Integer.parseInt(request.getParameter("id"));
+                String Nombre = request.getParameter("nombre");
+                int habilidad = Integer.parseInt(request.getParameter("habilidad"));
+
+                Tipos typ=new Tipos();
+                
+                typ.setTipo_id(tipo_id);
+                typ.setNombre(Nombre);
+                typ.setHabilidad(habilidad);
+                typ.ActualizarTipos();
+                response.sendRedirect("Tipo/index.jsp");
+            }
+        
+        } 
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

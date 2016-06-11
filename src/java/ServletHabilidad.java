@@ -11,14 +11,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import negocio.Usuario;
+import negocio.Habilidad;
 
 /**
  *
  * @author emanuel
  */
-@WebServlet(urlPatterns = {"/ServletUsuario"})
-public class ServletUsuario extends HttpServlet {
+@WebServlet(urlPatterns = {"/ServletHabilidad"})
+public class ServletHabilidad extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,46 +33,39 @@ public class ServletUsuario extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            
-            if(request.getParameter("eliminar")!=null){
-                int id=Integer.parseInt(request.getParameter("eliminar"));
-               out.println("Eliminar ID:"+id);
-               Usuario user=new Usuario();
-               user.setUsuario_id(id);
-               user.BorrarUsuario();
-               response.sendRedirect("Usuario/index.jsp");
+             if (request.getParameter("eliminar")!=null) {
+            int id=Integer.parseInt(request.getParameter("eliminar"));
+            out.println("Eliminar ID:"+id);
+            Habilidad hab=new Habilidad();
+            hab.setHabilidad_id(id);
+            hab.BorrarHabilidad();
+            response.sendRedirect("Habilidades/index.jsp");
+                
+
+            } else if (request.getParameter("guardar4") != null) {
+                String nombre = request.getParameter("nombre");
+               Habilidad hab=new Habilidad();
+              
+               hab.setNombre(nombre);
+               hab.GuardarHabilidad();              
                
                
-            }else if(request.getParameter("guardar")!=null){
-                String nombre=request.getParameter("nombre");
-               String passwd=request.getParameter("passwd");
-               String fecha=request.getParameter("fecha");
-               Usuario user=new Usuario();
-               user.setNombre(nombre);
-               user.setPasswd(passwd);
-               user.setFecha(fecha);
-               user.GuardarUsuario();
-               //REDIRECCIONAR A INDEX.JSP DeSPUES DE GUARDAR
-               response.sendRedirect("Usuario/index.jsp");
-                    
-               
-               
-           }else if(request.getParameter("editar")!=null){
-               int usuario_id=Integer.parseInt(request.getParameter("id"));
-               String nombre=request.getParameter("nombre");
-               String passwd=request.getParameter("passwd");
-               String fecha=request.getParameter("fecha");
-               Usuario user=new Usuario();
-               
-               user.setUsuario_id(usuario_id);
-               user.setNombre(nombre);
-               user.setPasswd(passwd);
-               user.setFecha(fecha);
-               user.ActualizarUsuario();
-               
-               response.sendRedirect("Usuario/index.jsp");
-               
-           }
+                response.sendRedirect("Habilidades/index.jsp");
+                
+                
+            }else if(request.getParameter("editar4") != null){
+                int habilidad_id = Integer.parseInt(request.getParameter("id"));
+                String Nombre = request.getParameter("nombre");
+                
+                Habilidad hab=new Habilidad();
+                hab.setHabilidad_id(habilidad_id);
+               hab.setNombre(Nombre);
+              hab.ActualizarHabilidad();
+
+              
+                response.sendRedirect("Habilidades/index.jsp");
+                
+            }
         }
     }
 

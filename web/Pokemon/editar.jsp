@@ -52,68 +52,74 @@
 
                         </div>
                         <%
-                            int id = Integer.parseInt(request.getParameter("editar"));
+                            int id = Integer.parseInt(request.getParameter("editar2"));
                             Coneccion con = new Coneccion();
-                            con.setConsulta("select * from Usuarios where usuario_id='" + id + "'");
+                            con.setConsulta("select * from pokemones where pokemon_id='" + id + "'");
                         %>
                         <div class="panel-body">
                             <% while (con.getResultado().next()) {  %>
 
-                            <form method="POST" action="../ServletUsuario?editar=si">
+                            <form method="POST" action="../ServletPokemon?editar2=si">
 
 
                                 <!-- OJO CON EL CAMPO READONLY QUE ES ENVIADO POR EL FORMULARIO PARA ACTUALIZAR -->
-                                <div>
-                                 <input type="text" readonly="true" value='<% out.println("" + con.getResultado().getString("usuario_id")); %>' name="id">
-                                </div>
-                                 <div class="form-group">
-                                    <label for="nombre">Nombre</label>
+                                <input type="text" readonly="true" value='<% out.println("" + con.getResultado().getString("pokemon_id")); %>' name="id">
+                                <div class="form-group">
+                                    <label for="nombre">pokemon </label>
                                     <input type="text" class="form-control" name="nombre" value='<% out.println("" + con.getResultado().getString("nombre")); %>' id="nombre" placeholder="Ingresar Nombre">
                                 </div>
                                 <div class="form-group">
-                                    <label for="nombre">Passwd</label>
-                                        <input type="text" class="form-control" name="passwd" value='<% out.println("" + con.getResultado().getString("passwd")); %>' id="nombre" placeholder="Ingresar Password">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="nombre">Fecha</label>
-                                            <input type="date" class="form-control" name="fecha" value='<% out.println("" + con.getResultado().getString("fecha")); %>' id="nombre" placeholder="Ingresar Fecha">
-                                        </div>
-
-                                        <td><input type="submit" name="editar" value="Actualizar"></td>
-                                        </form>
-                                        <% }%> 
-
+                                    <label for="nombre">numero</label>
+                                    <input type="text" class="form-control" name="numero" value='<% out.println("" + con.getResultado().getString("numero")); %>' id="nombre" placeholder="Ingresar Nombre">
+                                </div>
+                                <div class="form-group">
+                                    <label for="nombre">Fecha_nacimiento</label>
+                                    <input type="date" class="form-control" name="fecha" value='<% out.println("" + con.getResultado().getString("fecha_nacimiento")); %>' id="nombre" placeholder="Ingresar Nombre">
+                                </div>
+                                <div class="form-group">
+                                    <label for="nombre">Tipo</label>
+                                    <input type="text" class="form-control" name="tipo" value='<% out.println("" + con.getResultado().getString("tipo_id")); %>' id="nombre" placeholder="Ingresar Nombre">
+                                </div>
+                                <div class="form-group">
+                                    <label for="nombre">Creado Por</label>
+                                    <input type="text" class="form-control" name="creado" value='<% out.println("" + con.getResultado().getString("creado_por")); %>' id="nombre" placeholder="Ingresar Nombre">
                                 </div>
 
-                        </div>
-                        </p>
-
-                        <p class="lead">
-
-                            <a href="index.jsp" class="btn btn-primary">Volver</a>
-
-                        </p>
-                    </div>
-
-                    <div class="mastfoot">
-                        <div class="inner">
-
-
+                                <td><input type="submit" name="editar2" value="Actualizar"></td>
+                            </form>
+                            <% }%> 
 
                         </div>
-                    </div>
 
+                    </div>
+                    </p>
+
+                    <p class="lead">
+
+                        <a href="index.jsp" class="btn btn-primary">Volver</a>
+
+                    </p>
+                </div>
+
+                <div class="mastfoot">
+                    <div class="inner">
+
+
+
+                    </div>
                 </div>
 
             </div>
 
         </div>
 
-        <!-- Bootstrap core JavaScript
-        ================================================== -->
-        <!-- Placed at the end of the document so the pages load faster -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        <script src="../template/js/bootstrap.min.js"></script>
+    </div>
 
-    </body>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="../template/js/bootstrap.min.js"></script>
+
+</body>
 </html>
